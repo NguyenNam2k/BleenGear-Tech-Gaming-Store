@@ -92,75 +92,114 @@ BleenGear is a modern e-commerce solution engineered specifically for tech enthu
 - **Thunder Client / Postman** - API endpoint testing and automation
 - **ESLint & Prettier** - Code quality and formatting enforcement
 - **Uvicorn** - Lightning-fast ASGI web server for Python
-📁 Project Structure
-bleengear/
-├── frontend/                          # Client-side React SPA
-│   ├── public/                        # Static assets (logos, fallback images)
-│   │   ├── logo/                      # Brand assets
-│   │   └── favicon.ico
-│   ├── src/
-│   │   ├── assets/                    # Shared stylesheets and icons
-│   │   ├── components/                # Modular React components
-│   │   │   ├── admin/                 # Dashboard widgets and forms
-│   │   │   ├── cart/                  # Cart drawer and item cards
-│   │   │   ├── checkout/              # Shipping forms and VietQR modal
-│   │   │   ├── common/                # Reusable buttons, badges, inputs
-│   │   │   ├── layout/                # Header, Footer, and AI Search bar
-│   │   │   ├── product/               # Product cards, gallery, variant matrix
-│   │   │   └── search/                # AI visual modal and crop frame
-│   │   ├── pages/                     # Routed page components
-│   │   │   ├── AdminDashboard.jsx     # Store management overview
-│   │   │   ├── CartPage.jsx           # Full cart review
-│   │   │   ├── CheckoutPage.jsx       # Payment and order placement
-│   │   │   ├── HomePage.jsx           # Storefront landing page
-│   │   │   ├── ProductDetailPage.jsx  # Hardware configurator (PDP)
-│   │   │   └── SearchResultsPage.jsx  # AI vector match grid
-│   │   ├── services/                  # Axios API communication layer
-│   │   │   ├── api.js                 # Central Axios instance
-│   │   │   ├── authService.js         # Authentication endpoints
-│   │   │   ├── orderService.js        # Checkout and order endpoints
-│   │   │   └── productService.js      # Product and AI search endpoints
-│   │   ├── App.jsx                    # Root router and layout provider
-│   │   └── main.jsx                   # React entry point
-│   ├── package.json
-│   ├── tailwind.config.js             # Cyber Dark color palette configuration
-│   └── vite.config.js
-├── backend/                           # Node.js Core Web Server
-│   ├── src/
-│   │   ├── config/                    # System configurations
-│   │   │   ├── cloudinary.js          # Cloudinary asset storage setup
-│   │   │   └── db.js                  # MySQL connection pool
-│   │   ├── controllers/               # Business logic controllers
-│   │   │   ├── adminController.js     # Inventory and order operations
-│   │   │   ├── authController.js      # Register, login, OAuth
-│   │   │   ├── cartController.js      # Cart management
-│   │   │   ├── orderController.js     # Transactional checkout and VietQR
-│   │   │   └── productController.js   # PDP, catalog, and AI bridge
-│   │   ├── middlewares/               # Express middlewares
-│   │   │   ├── authMiddleware.js      # JWT token guard
-│   │   │   └── uploadMiddleware.js    # Multer temporary file parser
-│   │   ├── routes/                    # API route definitions
-│   │   │   ├── adminRoutes.js
-│   │   │   ├── authRoutes.js
-│   │   │   ├── orderRoutes.js
-│   │   │   └── productRoutes.js
-│   │   ├── workers/                   # Background tasks
-│   │   │   └── sessionWorker.js       # Inactivity session revocation
-│   │   └── server.js                  # Express application entrypoint
-│   ├── database/                      # SQL scripts and migrations
-│   │   ├── schema.sql                 # Complete database structure
-│   │   └── seed.sql                   # Realistic sample tech hardware data
-│   ├── package.json
-│   └── .env.example
-├── ai-service/                        # Python FastAPI Microservice
-│   ├── main.py                        # FastAPI application and route endpoints
-│   ├── model.py                       # CLIP model loader and inference engine
-│   ├── similarity.py                  # Cosine similarity and hybrid fusion math
-│   ├── requirements.txt               # Python package dependencies
-│   └── .env.example
-├── .gitignore                         # Multi-stack gitignore (Node + Python)
-├── LICENSE                            # MIT License
-└── README.md                          # Project documentation
+## 📁 Project Structure
+
+<details open>
+  <summary><b>Click to expand / collapse Monorepo Directory Architecture</b></summary>
+  <br>
+
+  <table>
+    <thead>
+      <tr>
+        <th align="left">Directory / Path</th>
+        <th align="left">Architecture Layer</th>
+        <th align="left">Scope & Responsibilities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code><b>frontend/</b></code></td>
+        <td><code>React 18 (Vite SPA)</code></td>
+        <td>Client-side single-page application and responsive UI layer</td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;├── <code>public/</code></td>
+        <td><code>Static Assets</code></td>
+        <td>Brand logos, payment badges, vector icons, and favicon assets</td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;└── <code>src/</code></td>
+        <td><code>Application Source</code></td>
+        <td>Core React source tree containing components, views, and clients</td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <code>components/</code></td>
+        <td><code>UI Component Library</code></td>
+        <td>AI search modal, image cropper, PDP variant matrix, VietQR cards</td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <code>pages/</code></td>
+        <td><code>Route Views</code></td>
+        <td>Home, Catalog, ProductDetail (PDP), Cart, Checkout, AdminDashboard</td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <code>services/</code></td>
+        <td><code>API Client Layer</code></td>
+        <td>Centralized Axios HTTP service modules for backend endpoints</td>
+      </tr>
+      <tr>
+        <td><code><b>backend/</b></code></td>
+        <td><code>Node.js (Express.js)</code></td>
+        <td>Core web backend, authentication, database pooling, and transactions</td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;├── <code>database/</code></td>
+        <td><code>Persistence Scripts</code></td>
+        <td>Relational schema DDL (MySQL) and realistic hardware seed datasets</td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;└── <code>src/</code></td>
+        <td><code>Server Runtime</code></td>
+        <td>Controllers, middlewares, routes, and asynchronous workers</td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <code>config/</code></td>
+        <td><code>System Config</code></td>
+        <td>MySQL InnoDB connection pool and Cloudinary storage configuration</td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <code>controllers/</code></td>
+        <td><code>Business Logic</code></td>
+        <td>Transactional checkout, inventory lock, PDP retrieval, and auth</td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <code>middlewares/</code></td>
+        <td><code>Request Interceptors</code></td>
+        <td>JWT authentication guards and Multer multi-angle asset parser</td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <code>routes/</code></td>
+        <td><code>API Routing</code></td>
+        <td>REST endpoint declarations for admin, auth, orders, and products</td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <code>workers/</code></td>
+        <td><code>Background Tasks</code></td>
+        <td>Scheduled cron jobs executing automatic idle session revocation</td>
+      </tr>
+      <tr>
+        <td><code><b>ai-service/</b></code></td>
+        <td><code>Python (FastAPI)</code></td>
+        <td>Dedicated microservice for multimodal deep learning vector operations</td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;├── <code>main.py</code></td>
+        <td><code>FastAPI Endpoints</code></td>
+        <td>APIs for image embedding, text embedding, and hybrid search queries</td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;├── <code>model.py</code></td>
+        <td><code>Model Backbone</code></td>
+        <td>Initializes and computes <code>clip-ViT-B-32-multilingual-v1</code> tensors</td>
+      </tr>
+      <tr>
+        <td>&nbsp;&nbsp;└── <code>similarity.py</code></td>
+        <td><code>Vector Math</code></td>
+        <td>Cosine similarity matching and weighted vector fusion calculations</td>
+      </tr>
+    </tbody>
+  </table>
+</details>
 
 🚀 Getting Started
 Prerequisites
