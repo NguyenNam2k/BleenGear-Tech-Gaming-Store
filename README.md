@@ -95,110 +95,71 @@ BleenGear is a modern e-commerce solution engineered specifically for tech enthu
 ## 📁 Project Structure
 
 <details open>
-  <summary><b>Click to expand / collapse Monorepo Directory Architecture</b></summary>
-  <br>
-
-  <table>
-    <thead>
-      <tr>
-        <th align="left">Directory / Path</th>
-        <th align="left">Architecture Layer</th>
-        <th align="left">Scope & Responsibilities</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><code><b>frontend/</b></code></td>
-        <td><code>React 18 (Vite SPA)</code></td>
-        <td>Client-side single-page application and responsive UI layer</td>
-      </tr>
-      <tr>
-        <td>&nbsp;&nbsp;├── <code>public/</code></td>
-        <td><code>Static Assets</code></td>
-        <td>Brand logos, payment badges, vector icons, and favicon assets</td>
-      </tr>
-      <tr>
-        <td>&nbsp;&nbsp;└── <code>src/</code></td>
-        <td><code>Application Source</code></td>
-        <td>Core React source tree containing components, views, and clients</td>
-      </tr>
-      <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <code>components/</code></td>
-        <td><code>UI Component Library</code></td>
-        <td>AI search modal, image cropper, PDP variant matrix, VietQR cards</td>
-      </tr>
-      <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <code>pages/</code></td>
-        <td><code>Route Views</code></td>
-        <td>Home, Catalog, ProductDetail (PDP), Cart, Checkout, AdminDashboard</td>
-      </tr>
-      <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <code>services/</code></td>
-        <td><code>API Client Layer</code></td>
-        <td>Centralized Axios HTTP service modules for backend endpoints</td>
-      </tr>
-      <tr>
-        <td><code><b>backend/</b></code></td>
-        <td><code>Node.js (Express.js)</code></td>
-        <td>Core web backend, authentication, database pooling, and transactions</td>
-      </tr>
-      <tr>
-        <td>&nbsp;&nbsp;├── <code>database/</code></td>
-        <td><code>Persistence Scripts</code></td>
-        <td>Relational schema DDL (MySQL) and realistic hardware seed datasets</td>
-      </tr>
-      <tr>
-        <td>&nbsp;&nbsp;└── <code>src/</code></td>
-        <td><code>Server Runtime</code></td>
-        <td>Controllers, middlewares, routes, and asynchronous workers</td>
-      </tr>
-      <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <code>config/</code></td>
-        <td><code>System Config</code></td>
-        <td>MySQL InnoDB connection pool and Cloudinary storage configuration</td>
-      </tr>
-      <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <code>controllers/</code></td>
-        <td><code>Business Logic</code></td>
-        <td>Transactional checkout, inventory lock, PDP retrieval, and auth</td>
-      </tr>
-      <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <code>middlewares/</code></td>
-        <td><code>Request Interceptors</code></td>
-        <td>JWT authentication guards and Multer multi-angle asset parser</td>
-      </tr>
-      <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;├── <code>routes/</code></td>
-        <td><code>API Routing</code></td>
-        <td>REST endpoint declarations for admin, auth, orders, and products</td>
-      </tr>
-      <tr>
-        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;└── <code>workers/</code></td>
-        <td><code>Background Tasks</code></td>
-        <td>Scheduled cron jobs executing automatic idle session revocation</td>
-      </tr>
-      <tr>
-        <td><code><b>ai-service/</b></code></td>
-        <td><code>Python (FastAPI)</code></td>
-        <td>Dedicated microservice for multimodal deep learning vector operations</td>
-      </tr>
-      <tr>
-        <td>&nbsp;&nbsp;├── <code>main.py</code></td>
-        <td><code>FastAPI Endpoints</code></td>
-        <td>APIs for image embedding, text embedding, and hybrid search queries</td>
-      </tr>
-      <tr>
-        <td>&nbsp;&nbsp;├── <code>model.py</code></td>
-        <td><code>Model Backbone</code></td>
-        <td>Initializes and computes <code>clip-ViT-B-32-multilingual-v1</code> tensors</td>
-      </tr>
-      <tr>
-        <td>&nbsp;&nbsp;└── <code>similarity.py</code></td>
-        <td><code>Vector Math</code></td>
-        <td>Cosine similarity matching and weighted vector fusion calculations</td>
-      </tr>
-    </tbody>
-  </table>
+  <summary>📁 <b>bleengear/</b> <i>(Root Monorepo)</i></summary>
+  <ul>
+    <li>
+      <details open>
+        <summary>📁 <b>frontend/</b> — <i>Client-side React 18 SPA (Vite + Tailwind CSS)</i></summary>
+        <ul>
+          <li>📁 <b>public/</b> — <i>Static assets, brand logos, payment badges, favicon</i></li>
+          <li>
+            <details open>
+              <summary>📁 <b>src/</b> — <i>Core application source code</i></summary>
+              <ul>
+                <li>📁 <b>assets/</b> — <i>Shared stylesheets and static icons</i></li>
+                <li>📁 <b>components/</b> — <i>Modular UI components (AI modal, PDP variant matrix, VietQR card)</i></li>
+                <li>📁 <b>pages/</b> — <i>Route views (Home, Catalog, ProductDetail, Cart, Checkout, Admin)</i></li>
+                <li>📁 <b>services/</b> — <i>Centralized Axios HTTP service clients</i></li>
+                <li>📄 <code>App.jsx</code> — <i>Root router configuration and layout wrapper</i></li>
+                <li>📄 <code>main.jsx</code> — <i>React DOM application entry point</i></li>
+              </ul>
+            </details>
+          </li>
+          <li>📄 <code>package.json</code> — <i>Frontend dependencies and scripts</i></li>
+          <li>📄 <code>tailwind.config.js</code> — <i>Cyber Dark theme color palette config</i></li>
+          <li>📄 <code>vite.config.js</code> — <i>Vite development and build configuration</i></li>
+        </ul>
+      </details>
+    </li>
+    <li>
+      <details open>
+        <summary>📁 <b>backend/</b> — <i>Core Web Server (Node.js & Express.js)</i></summary>
+        <ul>
+          <li>📁 <b>database/</b> — <i>MySQL schema DDL and realistic tech hardware seed datasets</i></li>
+          <li>
+            <details open>
+              <summary>📁 <b>src/</b> — <i>Server source code</i></summary>
+              <ul>
+                <li>📁 <b>config/</b> — <i>MySQL InnoDB connection pool and Cloudinary CDN setup</i></li>
+                <li>📁 <b>controllers/</b> — <i>Transactional checkout, inventory lock, PDP retrieval</i></li>
+                <li>📁 <b>middlewares/</b> — <i>JWT authorization guards and Multer file parsers</i></li>
+                <li>📁 <b>routes/</b> — <i>REST endpoint definitions (admin, auth, orders, products)</i></li>
+                <li>📁 <b>workers/</b> — <i>Inactivity session revocation background cron jobs</i></li>
+                <li>📄 <code>server.js</code> — <i>Express application runtime entrypoint</i></li>
+              </ul>
+            </details>
+          </li>
+          <li>📄 <code>package.json</code> — <i>Backend dependencies and server scripts</i></li>
+          <li>📄 <code>.env.example</code> — <i>Template for database and JWT credentials</i></li>
+        </ul>
+      </details>
+    </li>
+    <li>
+      <details open>
+        <summary>📁 <b>ai-service/</b> — <i>AI Microservice (Python FastAPI & Multilingual CLIP)</i></summary>
+        <ul>
+          <li>📄 <code>main.py</code> — <i>FastAPI application and visual/text search endpoints</i></li>
+          <li>📄 <code>model.py</code> — <i>clip-ViT-B-32-multilingual-v1 loader and tensor encoding</i></li>
+          <li>📄 <code>similarity.py</code> — <i>Cosine similarity and weighted hybrid vector fusion</i></li>
+          <li>📄 <code>requirements.txt</code> — <i>Python libraries (fastapi, uvicorn, torch, transformers)</i></li>
+          <li>📄 <code>.env.example</code> — <i>Environment configuration for AI model and port</i></li>
+        </ul>
+      </details>
+    </li>
+    <li>📄 <code>.gitignore</code> — <i>Multi-stack git ignore rules (Node.js & Python)</i></li>
+    <li>📄 <code>LICENSE</code> — <i>MIT open-source license</i></li>
+    <li>📄 <code>README.md</code> — <i>Project documentation and architecture overview</i></li>
+  </ul>
 </details>
 
 🚀 Getting Started
